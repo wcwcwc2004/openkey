@@ -1,2 +1,2 @@
 # openkey
-meituanopenkey
+ key = ？
