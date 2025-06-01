@@ -1,0 +1,90 @@
+var FindProxyForURL = function(init, profiles) {
+    return function(url, host) {
+        "use strict";
+        var result = init, scheme = url.substr(0, url.indexOf(":"));
+        do {
+            result = profiles[result];
+            if (typeof result === "function") result = result(url, host, scheme);
+        } while (typeof result !== "string" || result.charCodeAt(0) === 43);
+        return result;
+    };
+}("+auto switch", {
+    "+auto switch": function(url, host, scheme) {
+        "use strict";
+        if (/(?:^|\.)grok\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)cdsqs\.cn$/.test(host)) return "DIRECT";
+        if (/(?:^|\.)twitter\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)twimg\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)csp\.withgoogle\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)google\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)x\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)tiktokv\.eu$/.test(host)) return "+proxy";
+        if (/(?:^|\.)tiktokw\.eu$/.test(host)) return "+proxy";
+        if (/(?:^|\.)ttwstatic\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)tiktokcdn-eu\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)tiktokv\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)tiktokcdn-us\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)tiktokcdn\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)tiktok\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)googlevideo\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)ytimg\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)ggpht\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)sankuai\.com$/.test(host)) return "DIRECT";
+        if (/(?:^|\.)camo\.githubusercontent\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)raw\.githubusercontent\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)githubassets\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)youtube\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)hassbian\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)x\.ai$/.test(host)) return "+proxy";
+        if (/(?:^|\.)brave\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)jsdelivr\.net$/.test(host)) return "+proxy";
+        if (/(?:^|\.)gstatic\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)redditmedia\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)redd\.it$/.test(host)) return "+proxy";
+        if (/(?:^|\.)redditstatic\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)rlcdn\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)reddit\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)qq\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)binance\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)bnbstatic\.com$/.test(host)) return "DIRECT";
+        if (/(?:^|\.)chatgpt\.com$/.test(host)) return "+proxy";
+        if (/^www\.cdsqs\.cn$/.test(host)) return "DIRECT";
+        if (/^www\.google\.com$/.test(host)) return "+proxy";
+        if (/^www\.pixiv\.net$/.test(host)) return "+proxy";
+        if (/^accounts\.pixiv\.net$/.test(host)) return "+proxy";
+        if (/^github\.com$/.test(host)) return "+proxy";
+        if (/^chatgpt\.com$/.test(host)) return "+proxy";
+        if (/^www\.okx\.com$/.test(host)) return "+proxy";
+        if (/^twitter\.com$/.test(host)) return "+proxy";
+        if (/^core\.telegram\.org$/.test(host)) return "+proxy";
+        if (/^my\.telegram\.org$/.test(host)) return "+proxy";
+        if (/(?:^|\.)telegram\.org$/.test(host)) return "+proxy";
+        if (/^store\.steampowered\.com$/.test(host)) return "+proxy";
+        if (/^www\.steam\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)steampowered\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)google\.com\./.test(host)) return "+proxy";
+        if (/(?:^|\.)binance\./.test(host)) return "+proxy";
+        if (/^auth\.openai\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)openai\.com$/.test(host)) return "+proxy";
+        if (/^x\.com$/.test(host)) return "+proxy";
+        if (/^mailinabox\.email$/.test(host)) return "+proxy";
+        if (/^www\.binance\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)binance\./.test(host)) return "+proxy";
+        if (/(?:^|\.)bntrace\./.test(host)) return "+proxy";
+        if (/(?:^|\.)bnbstatic\./.test(host)) return "+proxy";
+        if (/(?:^|\.)appsflyersdk\./.test(host)) return "+proxy";
+        if (/(?:^|\.)saasexch\./.test(host)) return "+proxy";
+        if (/(?:^|\.)chrome-stats\.com$/.test(host)) return "+proxy";
+        if (/^chromewebstore\.google\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)twitter\.com$/.test(host)) return "+proxy";
+        if (/(?:^|\.)googleusercontent\./.test(host)) return "+proxy";
+        if (/(?:^|\.)docs\.qq\.com$/.test(host)) return "+proxy";
+        if (/^desktop\.docs\.qq\.com$/.test(host)) return "+proxy";
+        return "DIRECT";
+    },
+    "+proxy": function(url, host, scheme) {
+        "use strict";
+        if (/^127\.0\.0\.1$/.test(host) || /^::1$/.test(host) || /^localhost$/.test(host)) return "DIRECT";
+        return "SOCKS5 y120999.synology.me:10090; SOCKS y120999.synology.me:10090";
+    }
+});
