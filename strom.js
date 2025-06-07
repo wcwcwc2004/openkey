@@ -1,3 +1,18 @@
+/*
+ *
+ *
+ 本地解锁StormSniffer
+ 作者 @PayNeXC
+====================================
+[rewrite_local]
+^https?:\/\/api\.x-storm\.com\/app\/.+$ url script-response-body https://raw.githubusercontent.com/paynexss/qx/refs/heads/main/Scripts/StormSniffer.js
+
+[mitm]
+hostname = *.x-storm.com
+====================================
+*
+*
+*/
 
 
 const l = {
