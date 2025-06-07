@@ -5,8 +5,8 @@
 # 加密来源 @PayNe
 ====================================
 [rewrite_local]
-^https:\/\/yanchu\.maoyan\.com\/.* url script-response-header ttps://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
-^https:\/\/yanchu\.maoyan\.com\/.* url script-response-body ttps://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
+^https:\/\/yanchu\.maoyan\.com\/.* url script-response-header https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
+^https:\/\/yanchu\.maoyan\.com\/.* url script-response-body https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
 [mitm]
 hostname = *.maoyan.com
 ====================================
