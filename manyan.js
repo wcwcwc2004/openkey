@@ -5,7 +5,7 @@
 # 加密来源 @PayNe
 ====================================
 [rewrite_local]
-^https:\/\/yanchu\.maoyan\.com\/api\/mobile\/comment\/project\/hotComment\?projectId=410483 url script-response-body https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
+^https:\/\/yanchu\.maoyan\.com url script-response-body https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
 
 [mitm]
 hostname = *.x-storm.com
