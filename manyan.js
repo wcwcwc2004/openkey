@@ -5,32 +5,33 @@
 # 加密来源 @PayNe
 ====================================
 [rewrite_local]
-^https:\/\/yanchu\.maoyan\.com url script-response-body https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
-
+^https:\/\/yanchu\.maoyan\.com\/.* url script-response-header ttps://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
+^https:\/\/yanchu\.maoyan\.com\/.* url script-response-body ttps://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
 [mitm]
 hostname = *.x-storm.com
 ====================================
 */
 
 
-
+let headers = $response.headers;
 let body = $response.body;
 let obj;
 
-// 尝试解析 JSON 响应
+// 修改响应头中的 ServerTime
+if (headers['ServerTime']) {
+  headers['ServerTime'] = '4070908800000';
+}
+
+// 尝试解析并修改响应体中的 serverTime
 try {
   obj = JSON.parse(body);
-  
-  // 检查是否存在 attrMaps 和 serverTime 字段
-  if ( && obj.attrMaps.serverTime) {
-    // 修改 serverTime 为 2099-01-01 00:00:00 的时间戳（4070908800000 毫秒）
-    obj.serverTime = 4070908800000;
+  if (obj.attrMaps && obj.attrMaps.serverTime) {
+    obj.attrMaps.serverTime = 4070908800000;
   }
-  
-  // 将修改后的对象转换回 JSON 字符串
-  $done({ body: JSON.stringify(obj) });
+  body = JSON.stringify(obj);
 } catch (e) {
-  // 如果响应不是 JSON 或解析失败，直接返回原始响应
   console.log("Error parsing JSON: " + e);
-  $done({ body });
 }
+
+// 返回修改后的响应
+$done({ headers, body });
