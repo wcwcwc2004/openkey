@@ -6,7 +6,7 @@
 ====================================
 [rewrite_local]
 # 修改响应头
-^https:\/\/yanchu\.maoyan\.com\/.* url script-response-header https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan_header.js
+^https:\/\/*\.maoyan\.com\/.* url script-response-header https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan_header.js
 
 
 [mitm]
