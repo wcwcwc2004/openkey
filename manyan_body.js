@@ -6,7 +6,7 @@
 ====================================
 [rewrite_local]
 # 修改响应体
-^https:\/\/yanchu\.maoyan\.com\/.* url script-response-body https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan_body.js
+^https:\/\/*\.maoyan\.com\/.* url script-response-body https://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan_body.js
 
 [mitm]
 hostname = yanchu.maoyan.com
