@@ -8,7 +8,7 @@
 ^https:\/\/yanchu\.maoyan\.com\/.* url script-response-header ttps://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
 ^https:\/\/yanchu\.maoyan\.com\/.* url script-response-body ttps://raw.githubusercontent.com/wcwcwc2004/openkey/refs/heads/main/manyan.js
 [mitm]
-hostname = *.x-storm.com
+hostname = *.maoyan.com
 ====================================
 */
 
